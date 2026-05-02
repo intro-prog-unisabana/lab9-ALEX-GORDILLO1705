@@ -1,6 +1,10 @@
 from aircraft import Aircraft
 
-model = input()
+try:
+    model = input()
+except EOFError:
+    model = ""
+
 aircraft = Aircraft(model)
 
 while True:
@@ -14,11 +18,15 @@ while True:
 
     parts = command.split()
 
-    if len(parts) < 2:
+    if len(parts) != 2:
         continue
 
-    action = parts[0]
-    value = int(parts[1])
+    action, value = parts[0], parts[1]
+
+    try:
+        value = int(value)
+    except:
+        continue
 
     if action == "A":
         aircraft.ascend(value)
