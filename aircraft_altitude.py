@@ -1,26 +1,28 @@
 from aircraft import Aircraft
 
-def main():
-    model = input()
-    aircraft = Aircraft(model)
+model = input()
+aircraft = Aircraft(model)
 
-    while True:
+while True:
+    try:
         command = input()
+    except EOFError:
+        break
 
-        if command == "X":
-            break
+    if command == "X":
+        break
 
-        parts = command.split()
-        action = parts[0]
-        value = int(parts[1])
+    parts = command.split()
 
-        if action == "A":
-            aircraft.ascend(value)
-        elif action == "D":
-            aircraft.descend(value)
+    if len(parts) < 2:
+        continue
 
-    print(f"Final altitude: {aircraft.altitude} feet")
+    action = parts[0]
+    value = int(parts[1])
 
+    if action == "A":
+        aircraft.ascend(value)
+    elif action == "D":
+        aircraft.descend(value)
 
-if __name__ == "__main__":
-    main()
+print(f"Final altitude: {aircraft.altitude} feet")
