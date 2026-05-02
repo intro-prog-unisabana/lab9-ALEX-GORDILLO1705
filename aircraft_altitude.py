@@ -1,6 +1,6 @@
 def main():
     try:
-        name = input()  # nombre del avión
+        name = input()
         altitude = 0
 
         while True:
@@ -12,24 +12,24 @@ def main():
             parts = line.split()
 
             if len(parts) != 2:
-                continue  # evita errores
+                continue
 
             command, value = parts
 
             try:
                 value = int(value)
             except:
-                continue  # evita crash si algo viene mal
+                continue
 
             if command == "A":
                 altitude += value
             elif command == "D":
                 altitude -= value
 
-        print(altitude)
+        print(f"Final altitude: {altitude} feet")
 
     except:
-        pass  # evita que el programa termine con error
+        pass
 
 
 if __name__ == "__main__":
