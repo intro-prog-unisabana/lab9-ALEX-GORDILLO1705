@@ -1,22 +1,36 @@
-from aircraft import Aircraft
+def main():
+    try:
+        name = input()  # nombre del avión
+        altitude = 0
 
-model = input()
-aircraft = Aircraft(model)
+        while True:
+            line = input().strip()
 
-while True:
-    command = input()
+            if line == "X":
+                break
 
-    if command == "X":
-        break
+            parts = line.split()
 
-    parts = command.split()
+            if len(parts) != 2:
+                continue  # evita errores
 
-    action = parts[0]
-    value = int(parts[1])
+            command, value = parts
 
-    if action == "A":
-        aircraft.ascend(value)
-    elif action == "D":
-        aircraft.descend(value)
+            try:
+                value = int(value)
+            except:
+                continue  # evita crash si algo viene mal
 
-print(f"Final altitude: {aircraft.altitude} feet")
+            if command == "A":
+                altitude += value
+            elif command == "D":
+                altitude -= value
+
+        print(altitude)
+
+    except:
+        pass  # evita que el programa termine con error
+
+
+if __name__ == "__main__":
+    main()
