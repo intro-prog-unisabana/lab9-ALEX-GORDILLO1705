@@ -54,3 +54,7 @@ def main():
             print(cars[car_id])
         else:
             print("Car not found.")
+
+if __name__ == "__main__":
+    # TODO: tu código del menú aquí (todo el while)
+    main()
